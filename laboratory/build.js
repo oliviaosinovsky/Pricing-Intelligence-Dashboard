@@ -1,0 +1,2 @@
+import {mkdir,copyFile,readFile} from 'node:fs/promises';import {validateModel} from './engine.js';
+validateModel(JSON.parse(await readFile('defaults.json','utf8')));await mkdir('dist',{recursive:true});for(const f of ['index.html','styles.css','app.js','engine.js','report.js','defaults.json','research.json','docx-lib.js','DOCX-LICENSE.txt'])await copyFile(f,'dist/'+f);console.log('Built dist/; relative paths support /laboratory/.');
